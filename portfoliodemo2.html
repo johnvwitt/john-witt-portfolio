@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>John Witt | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f4f4f8;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+    header {
+      background-color: #0a0a23;
+      color: #fff;
+      padding: 2rem;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      background-color: #ddd;
+      padding: 1rem;
+      gap: 1.5rem;
+    }
+    nav a {
+      color: #0a0a23;
+      text-decoration: none;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    main {
+      max-width: 1000px;
+      margin: auto;
+      padding: 2rem;
+    }
+    section {
+      display: none;
+      margin-bottom: 3rem;
+    }
+    section.active {
+      display: block;
+    }
+    h2 {
+      border-bottom: 2px solid #ccc;
+      padding-bottom: 0.3rem;
+      color: #0a0a23;
+    }
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+    .project-card, .gallery-icon {
+      background: #fff;
+      border: 1px solid #ddd;
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      cursor: pointer;
+      text-align: center;
+    }
+    .wide-card {
+      grid-column: 1 / -1;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.6);
+    }
+    .modal-content {
+      background-color: #fff;
+      margin: 5% auto;
+      padding: 2rem;
+      border-radius: 8px;
+      max-width: 90%;
+      max-height: 80%;
+      overflow-y: auto;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      position: relative;
+    }
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      font-size: 1.5rem;
+      color: #333;
+      cursor: pointer;
+    }
+    .footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      background: #eaeaea;
+    }
+    a {
+      color: #0056b3;
+      text-decoration: none;
+    }
+    pre {
+      background: #f1f1f1;
+      padding: 1rem;
+      border-radius: 6px;
+      overflow-x: auto;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .gallery-icon img {
+      width: 48px;
+      height: 48px;
+      margin-bottom: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>John Witt</h1>
+    <p>Business Systems Analyst | Aspiring Legal Professional | Literary Publisher</p>
+  </header>
+
+  <nav>
+    <a onclick="showSection('featured')">Featured Work</a>
+    <a onclick="showSection('about')">About</a>
+    <a onclick="showSection('experience')">Experience</a>
+    <a onclick="showSection('education')">Education</a>
+    <a onclick="showSection('skills')">Skills</a>
+    <a onclick="showSection('documents')">Documents</a>
+    <a onclick="showSection('gallery')">Gallery</a>
+  </nav>
+
+  <main>
+    <section id="featured" class="active">
+      <h2>Featured Work</h2>
+      <div class="project-grid">
+        <div class="project-card" onclick="openModal('audit')">
+          <h3>SQL Audit Example</h3>
+          <p>Sanitized report used to identify coverage-tier mismatches and automate corrections across medical and dental benefits files.</p>
+        </div>
+        <div class="project-card" onclick="openModal('pivot')">
+          <h3>SQL Pivot & Attribute Join</h3>
+          <p>Advanced SQL logic using pivoted attribute data joins for benefits reporting. <span style="color:#0056b3; text-decoration:underline;">View Code</span></p>
+        </div>
+        <div class="project-card" onclick="openModal('essay')">
+          <h3>Law School Writing Sample</h3>
+          <p>Essay on administrative discretion in correctional settings. Designed for admissions portfolios.</p>
+        </div>
+        <div class="project-card wide-card" onclick="openModal('nocturne')">
+          <h3>Nocturne Verse</h3>
+          <p>A literary journal exploring poetic and fictional storytelling in a moody, evocative aesthetic.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <h2>About Me</h2>
+      <p>With a background in systems analysis, compliance, and literary publishing, I work at the intersection of precision, narrative, and strategy. I’m completing my BA at Texas Tech with concentrations in Organizational Leadership, Psychology, and Political Science.</p>
+    </section>
+
+    <section id="experience">
+      <h2>Professional Experience</h2>
+      <h3>Business Systems Analyst – Empyrean Benefit Solutions</h3>
+      <ul>
+        <li>Defined, reviewed, and prioritized business requirements with stakeholders</li>
+        <li>Produced data-driven solutions for benefit plan accuracy</li>
+      </ul>
+      <h3>Cryptologic Linguist – US Army</h3>
+      <ul>
+        <li>Interpreted foreign signals and communications with linguistic precision</li>
+        <li>Specialized in Russian and analytical translation</li>
+      </ul>
+    </section>
+
+    <section id="education">
+      <h2>Education</h2>
+      <p><strong>Texas Tech University</strong><br />BA in General Studies | 4.0 GPA | Minor in Legal Studies</p>
+      <p><strong>Trinity Valley Community College</strong><br />AA in Business Administration | 3.88 GPA</p>
+    </section>
+
+    <section id="skills">
+      <h2>Skills & Tools</h2>
+      <ul>
+        <li>SQL / Data Analysis / Reporting</li>
+        <li>Agile Methodology & Legal Research</li>
+        <li>Technical Writing / UX Docs</li>
+        <li>HTML / Markdown / Netlify CMS</li>
+      </ul>
+    </section>
+
+    <section id="documents">
+      <h2>Documents & Projects</h2>
+      <ul>
+        <li><a href="#">Résumé (PDF)</a></li>
+        <li><a href="#">Writing Samples</a></li>
+        <li><a href="#">Law School Statement</a></li>
+        <li><a href="#">TCW Aetna Report SQL (Preview)</a></li>
+      </ul>
+    </section>
+
+    <section id="gallery">
+      <h2>Gallery of Work</h2>
+      <div class="gallery-grid">
+        <div class="gallery-icon" onclick="openModal('gallery_sample_1')">
+  <img src="https://cdn-icons-png.flaticon.com/512/337/337946.png" alt="Doc Icon">
+  <div>JVWitt_Case Study 1.docx</div>
+        </div>
+        <div class="gallery-icon" onclick="openModal('gallery_sample_2')">
+          <img src="https://cdn-icons-png.flaticon.com/512/337/337946.png" alt="Doc Icon">
+          <div>SQL File: Pivot Join</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="modal" id="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+
+  <div class="footer">
+    &copy; 2025 John Witt | <a href="https://linkedin.com/in/johnvwitt1836" target="_blank">LinkedIn</a> | <a href="https://nocturne-verse.netlify.app" target="_blank">Nocturne Verse</a>
+  </div>
+
+  <script>
+    const modal = document.getElementById('modal');
+    const modalBody = document.getElementById('modal-body');
+
+    const content = {
+      audit: `<h3>SQL Audit Example</h3><p>Sanitized report used to identify coverage-tier mismatches and automate corrections across medical and dental benefits files.</p>` +
+             `<pre>-- Sample sanitized audit SQL\nSELECT EMPLOYEE_ID, PLAN_TYPE, TIER, CORRECTED_TIER\nFROM BENEFIT_AUDIT_REPORT\nWHERE DISCREPANCY_FLAG = 'Y';</pre>`,
+
+      pivot: `<h3>SQL Pivot & Attribute Join</h3><p>This example demonstrates advanced SQL logic using a pivoted attribute table with dynamic joins to streamline benefit reporting.</p>` +
+             `<pre>SELECT\n    ev.SSN,\n    ATT.STATUS,\n    ATT.ACAFTPT,\n    ATT.ORIGINALHIREDATE,\n    ATT.CURRENTSALARY,\n    ATT.ELIGGROUP\n \nFROM EMPLOYEE_VIEW ev\n \nLEFT JOIN\n    (SELECT SSN,\n            EMPLOYEE_ATTRIBUTE_ID,\n            COALESCE(STRING_VALUE, CAST(NUMBER_VALUE AS VARCHAR(50)),CAST(FORMAT(DATE_VALUE, 'MM/dd/yyyy') AS VARCHAR(50))) AS VALUE\n        FROM EMPLOYEE_ATTRIBUTE_PROCESSED_VALUE_DETAIL_VIEW\n        WHERE TO_DATE = '9999-12-31') AS TBL\n    PIVOT(MAX(VALUE)\n        FOR EMPLOYEE_ATTRIBUTE_ID IN (STATUS, ACAFTPT, ORIGINALHIREDATE, CURRENTSALARY, ELIGGROUP)) AS ATT ON ATT.SSN = ev.SSN\n\nORDER BY 1;</pre>`,
+
+      essay: `<h3>Law School Writing Sample</h3><p>Essay examining the ethical implications of administrative discretion in correctional settings.</p>`,
+
+      nocturne: `<h3>Nocturne Verse</h3><p>Nocturne Verse is a fledgling digital journal devoted to the eerie, poetic, and sublime. Founded in 2025, it showcases original verse and fiction exploring themes of loss, longing, and liminality.</p>`,
+
+      gallery_sample_1: `<h3>JVWitt_Case Study 1.docx</h3><iframe src='https://example.com/JVWitt_Case_Study_1.pdf' width='100%' height='600px' style='border:none;'></iframe>`,
+
+      gallery_sample_2: `<h3>SQL File: Pivot Join</h3><pre>-- Example SQL content from uploaded file\nSELECT ev.SSN, ... FROM EMPLOYEE_VIEW ...</pre>`
+    };
+
+    function openModal(key) {
+      modalBody.innerHTML = content[key];
+      modal.style.display = 'block';
+    }
+
+    function closeModal() {
+      modal.style.display = 'none';
+    }
+
+    function showSection(id) {
+      document.querySelectorAll('main section').forEach(s => s.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    }
+
+    window.onclick = function(event) {
+      if (event.target === modal) {
+        closeModal();
+      }
+    };
+  </script>
+</body>
+</html>
