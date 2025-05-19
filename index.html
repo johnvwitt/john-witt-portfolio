@@ -151,8 +151,8 @@
       <h2>Featured Work</h2>
       <div class="project-grid">
         <div class="project-card" onclick="openModal('audit')">
-          <h3>SQL Audit Example</h3>
-          <p>Sanitized report used to identify coverage-tier mismatches and automate corrections across medical and dental benefits files.</p>
+          <h3>Organizational Leadership</h3>
+          <p>A perspective on leadership resulting from years of experience in a diverse range of fields.</p>
         </div>
         <div class="project-card" onclick="openModal('pivot')">
           <h3>SQL Pivot & Attribute Join</h3>
@@ -285,8 +285,8 @@ My academic journey reflects this dual path. At Texas Tech University, I’m com
     const modalBody = document.getElementById('modal-body');
 
     const content = {
-      audit: `<h3>Organizational Leadership</h3><p>A perspective on leadership resulting from years of experience in a diverse range of fields.</p>` +
-             `<pre>How do you deal with conflict in the workplace? Read my perspective on the relationship between assertiveness, confrontation, leadership, ethical communication, and results. <iframe src="https://docs.google.com/gview?url=https://john-witt-portfolio.netlify.app/Reforming the Filibuster.pdf&embedded=true" width="100%" height="600px" style="border:none;"></iframe></pre>`,
+      audit: `<h3>Organizational Leadership</h3><p>How do you deal with conflict in the workplace? Read my perspective on the relationship between assertiveness, confrontation, leadership, ethical communication, and results.</p>` +
+             `<iframe src="https://docs.google.com/gview?url=https://john-witt-portfolio.netlify.app/Reforming the Filibuster.pdf&embedded=true" width="100%" height="600px" style="border:none;"></iframe>`,
 
       pivot: `<h3>SQL Pivot & Attribute Join</h3><p>This example demonstrates advanced SQL logic using a pivoted attribute table with dynamic joins to streamline benefit reporting.</p>` +
              `<pre>SELECT\n    ev.SSN,\n    ATT.STATUS,\n    ATT.ACAFTPT,\n    ATT.ORIGINALHIREDATE,\n    ATT.CURRENTSALARY,\n    ATT.ELIGGROUP\n \nFROM EMPLOYEE_VIEW ev\n \nLEFT JOIN\n    (SELECT SSN,\n            EMPLOYEE_ATTRIBUTE_ID,\n            COALESCE(STRING_VALUE, CAST(NUMBER_VALUE AS VARCHAR(50)),CAST(FORMAT(DATE_VALUE, 'MM/dd/yyyy') AS VARCHAR(50))) AS VALUE\n        FROM EMPLOYEE_ATTRIBUTE_PROCESSED_VALUE_DETAIL_VIEW\n        WHERE TO_DATE = '9999-12-31') AS TBL\n    PIVOT(MAX(VALUE)\n        FOR EMPLOYEE_ATTRIBUTE_ID IN (STATUS, ACAFTPT, ORIGINALHIREDATE, CURRENTSALARY, ELIGGROUP)) AS ATT ON ATT.SSN = ev.SSN\n\nORDER BY 1;</pre>`,
