@@ -290,7 +290,37 @@ My academic journey reflects this dual path. At Texas Tech University, I’m com
 
       pivot: `<h3>SQL Pivot & Attribute Join</h3><p>This example demonstrates advanced SQL logic using a pivoted attribute table with dynamic joins to streamline benefit reporting.</p>` +
              `<pre>SELECT\n    ev.SSN,\n    ATT.STATUS,\n    ATT.ACAFTPT,\n    ATT.ORIGINALHIREDATE,\n    ATT.CURRENTSALARY,\n    ATT.ELIGGROUP\n \nFROM EMPLOYEE_VIEW ev\n \nLEFT JOIN\n    (SELECT SSN,\n            EMPLOYEE_ATTRIBUTE_ID,\n            COALESCE(STRING_VALUE, CAST(NUMBER_VALUE AS VARCHAR(50)),CAST(FORMAT(DATE_VALUE, 'MM/dd/yyyy') AS VARCHAR(50))) AS VALUE\n        FROM EMPLOYEE_ATTRIBUTE_PROCESSED_VALUE_DETAIL_VIEW\n        WHERE TO_DATE = '9999-12-31') AS TBL\n    PIVOT(MAX(VALUE)\n        FOR EMPLOYEE_ATTRIBUTE_ID IN (STATUS, ACAFTPT, ORIGINALHIREDATE, CURRENTSALARY, ELIGGROUP)) AS ATT ON ATT.SSN = ev.SSN\n\nORDER BY 1;</pre>`+ 
-           `<pre> TEST </pre>`,
+            `<pre>WITH RankedEmployees AS (
+    SELECT 
+        ev.last_name AS 'Employee Last Name',
+        ev.first_name AS 'Employee First Name',
+        FORMAT(ev.birthdate, 'MM/dd/yyyy') AS 'Date of Birth',
+        ev.employee_id AS 'Employee ID number',
+        ad.Address_1 AS 'Street Address',
+        COALESCE(ad.address_2, '') AS 'Street Address 2',
+        ad.city AS 'City',
+        ad.state AS 'State',
+        ad.postal_code AS 'Zip Code',
+        DATEDIFF(YEAR, ev.birthdate, GETDATE()) AS Age,
+        ROW_NUMBER() OVER (PARTITION BY ev.employee_id ORDER BY ad.to_date DESC) AS RowNum
+    FROM employee_view ev
+    JOIN employee_address_detail_view ad
+        ON ev.employee_uuid = ad.EMPLOYEE_UUID
+    WHERE ad.State = 'MN'
+)
+SELECT 
+    [Employee Last Name],
+    [Employee First Name],
+    [Date of Birth],
+    [Employee ID number],
+    [Street Address],
+    [Street Address 2],
+    [City],
+    [State],
+    [Zip Code]
+FROM RankedEmployees
+WHERE RowNum = 1
+ORDER BY Age DESC; -- Sorting by age (oldest to youngest)</pre>`,
 
       essay: `<h3>Law School Writing Sample</h3><p>Essay examining the ethical implications of administrative discretion in correctional settings.</p>`,
 
