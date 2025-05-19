@@ -320,7 +320,7 @@ SELECT
     [Zip Code]
 FROM RankedEmployees
 WHERE RowNum = 1
-ORDER BY Age DESC; -- Sorting by age (oldest to youngest)</pre>` +
+ORDER BY Age DESC; -- Sorting by age (oldest to youngest)</pre>`+
         `<pre> declare @lookback int = 9
 
 --TODO: ADD CDB LOGIC
@@ -878,27 +878,7 @@ and (dental.ssn is not null
 )
 and ev.EMPLOYEE_UUID not in (select EMPLOYEE_UUID from EMPLOYEE_ATTRIBUTE_PROCESSED_VALUE_DETAIL_VIEW where to_date = '9999-12-31' and EMPLOYEE_ATTRIBUTE_ID = 'retiree' and STRING_VALUE = 'y')
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 union all
-
 
 select DISTINCT top 10000
 	
@@ -991,9 +971,6 @@ RIGHT(CONCAT(space(8),''), 8) AS [Monthly Benefit Amount - 4],
 LEFT(CONCAT(CASE WHEN LTD.PLAN_ID IS NULL THEN '' ELSE 'A' END, SPACE(1)), 1) AS [Salary Mode - 4],
 RIGHT(CONCAT(space(8),''), 7) AS [Salary Amount - 4],
 
-
-
-
 LEFT(CONCAT(CASE WHEN STD.PLAN_ID IS NULL THEN '' ELSE 'AS' END, SPACE(2)), 2) AS [Coverage Code - 5], --STD
 LEFT(CONCAT(FORMAT(STD.PLAN_FROM_DATE,'MMddyyyy'), SPACE(8)), 8) AS [Coverage Start Date - 5],
 LEFT(CONCAT(CASE WHEN STD.LAST_DAY_OF_COVERAGE < '9999-12-31' THEN FORMAT(STD.LAST_DAY_OF_COVERAGE, 'MMddyyyy') else '' end, SPACE(8)), 8) AS [Coverage Stop Date - 5],
@@ -1007,7 +984,6 @@ LEFT(CONCAT('', SPACE(10)), 10) AS [Filler],
 RIGHT(CONCAT(space(8),''), 8) AS [Weekly Benefit Amount - 5],--#todo: std benefit amount
 LEFT(CONCAT(CASE WHEN STD.PLAN_ID IS NULL THEN '' ELSE 'A' END, SPACE(1)), 1) AS [Salary Mode - 5],
 RIGHT(CONCAT(space(8),''), 7) AS [Salary Amount - 5],
-
 
 LEFT(CONCAT('', SPACE(2)), 2) AS [Coverage Code - 6],
 LEFT(CONCAT('', SPACE(8)), 8) AS [Coverage Start Date - 6],
@@ -1467,36 +1443,7 @@ and (dental.ssn is not null
 )
 and ev.EMPLOYEE_UUID not in (select EMPLOYEE_UUID from EMPLOYEE_ATTRIBUTE_PROCESSED_VALUE_DETAIL_VIEW where to_date = '9999-12-31' and EMPLOYEE_ATTRIBUTE_ID = 'retiree' and STRING_VALUE = 'y')
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	union all
-
-
-
-
-
-
-
-
-
-
 
 --RETIREE logic:
 
@@ -1594,9 +1541,6 @@ RIGHT(CONCAT('0000000000',CAST(LTD.FINAL_BENEFIT_AMOUNT AS INT), CASE WHEN LTD.P
 LEFT(CONCAT(CASE WHEN LTD.PLAN_ID IS NULL THEN '' ELSE 'A' END, SPACE(1)), 1) AS [Salary Mode - 4],
 RIGHT(CONCAT('0000000000',CAST(ATT2.NUMBER_VALUE AS INT), CASE WHEN LTD.PLAN_ID IS NULL THEN '          ' ELSE '' END), 7) AS [Salary Amount - 4],
 
-
-
-
 LEFT(CONCAT(CASE WHEN STD.PLAN_ID IS NULL THEN '' ELSE 'AS' END, SPACE(2)), 2) AS [Coverage Code - 5], --STD
 LEFT(CONCAT(FORMAT(STD.PLAN_FROM_DATE,'MMddyyyy'), SPACE(8)), 8) AS [Coverage Start Date - 5],
 LEFT(CONCAT(CASE WHEN STD.LAST_DAY_OF_COVERAGE < '9999-12-31' THEN FORMAT(STD.LAST_DAY_OF_COVERAGE, 'MMddyyyy') else '' end, SPACE(8)), 8) AS [Coverage Stop Date - 5],
@@ -1610,7 +1554,6 @@ LEFT(CONCAT('', SPACE(10)), 10) AS [Filler],
 RIGHT(CONCAT('0000000000',CAST(ATT2.NUMBER_VALUE/52*.6 AS INT), CASE WHEN STD.PLAN_ID IS NULL THEN '          ' ELSE '' END), 8) AS [Weekly Benefit Amount - 5],--#todo: std benefit amount
 LEFT(CONCAT(CASE WHEN STD.PLAN_ID IS NULL THEN '' ELSE 'A' END, SPACE(1)), 1) AS [Salary Mode - 5],
 RIGHT(CONCAT( '0000000000',CASE WHEN STD.PLAN_ID IS NULL THEN '' ELSE CAST(ATT2.NUMBER_VALUE AS INT) END, CASE WHEN STD.PLAN_ID IS NULL THEN '          ' ELSE '' END), 7) AS [Salary Amount - 5],
-
 
 LEFT(CONCAT('', SPACE(2)), 2) AS [Coverage Code - 6],
 LEFT(CONCAT('', SPACE(8)), 8) AS [Coverage Start Date - 6],
@@ -1918,7 +1861,6 @@ LEFT(CONCAT('', SPACE(2)), 2) AS [Work State - 30],
 LEFT(CONCAT('', SPACE(1)), 1) AS [Job Status Code (full time/part time indicator)],
 LEFT(CONCAT('', SPACE(8)), 8) AS [Job Status (full time/part time) As of Date ]
 
-
 FROM EMPLOYEE_VIEW EV
 INNER JOIN EMPLOYEE_ADDRESS_DETAIL_VIEW AD
 	ON AD.IS_PRIMARY = 'Y'
@@ -2054,12 +1996,7 @@ and (dental.ssn is not null
 )
 and ev.EMPLOYEE_UUID in (select EMPLOYEE_UUID from EMPLOYEE_ATTRIBUTE_PROCESSED_VALUE_DETAIL_VIEW where to_date = '9999-12-31' and EMPLOYEE_ATTRIBUTE_ID = 'retiree' and STRING_VALUE = 'y')
 
-
-
-
-
 union all
-
 
 select DISTINCT top 10000
 	
@@ -2171,7 +2108,6 @@ LEFT(CONCAT('', SPACE(10)), 10) AS [Filler],
 RIGHT(CONCAT(space(8),''), 8) AS [Weekly Benefit Amount - 5],--#todo: std benefit amount
 LEFT(CONCAT(CASE WHEN STD.PLAN_ID IS NULL THEN '' ELSE 'A' END, SPACE(1)), 1) AS [Salary Mode - 5],
 RIGHT(CONCAT(space(8),''), 7) AS [Salary Amount - 5],
-
 
 LEFT(CONCAT('', SPACE(2)), 2) AS [Coverage Code - 6],
 LEFT(CONCAT('', SPACE(8)), 8) AS [Coverage Start Date - 6],
@@ -2479,7 +2415,6 @@ LEFT(CONCAT('', SPACE(2)), 2) AS [Work State - 30],
 LEFT(CONCAT('', SPACE(1)), 1) AS [Job Status Code (full time/part time indicator)],
 LEFT(CONCAT('', SPACE(8)), 8) AS [Job Status (full time/part time) As of Date ]
 
-
 FROM EMPLOYEE_VIEW EV
 INNER JOIN EMPLOYEE_DEPENDENT_VIEW EDV
 	ON EV.EMPLOYEE_UUID = EDV.EMPLOYEE_UUID
@@ -2630,13 +2565,7 @@ and (dental.ssn is not null
 )
 and ev.EMPLOYEE_UUID in (select EMPLOYEE_UUID from EMPLOYEE_ATTRIBUTE_PROCESSED_VALUE_DETAIL_VIEW where to_date = '9999-12-31' and EMPLOYEE_ATTRIBUTE_ID = 'retiree' and STRING_VALUE = 'y')
 
-
 UNION ALL
-
-
-
-
-
 
 --COBRA LOGIC
 
@@ -2747,7 +2676,6 @@ LEFT(CONCAT('', SPACE(10)), 10) AS [Filler],
 RIGHT(CONCAT('0000000000',''), 8) AS [Weekly Benefit Amount - 5],--#todo: std benefit amount
 LEFT(CONCAT('', SPACE(1)), 1) AS [Salary Mode - 5],
 RIGHT(CONCAT( '0000000000',''), 7) AS [Salary Amount - 5],
-
 
 LEFT(CONCAT('', SPACE(2)), 2) AS [Coverage Code - 6],
 LEFT(CONCAT('', SPACE(8)), 8) AS [Coverage Start Date - 6],
@@ -3100,33 +3028,11 @@ LEFT JOIN EMPLOYEE_ATTRIBUTE_PROCESSED_VALUE_DETAIL_VIEW ATT6
 	AND ATT6.EMPLOYEE_ATTRIBUTE_ID = ''
 	AND ATT6.TO_DATE = '9999-12-31'
 
-
-
 where 1=1
 and (dental.ssn is not null
 )
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 union all
-
 
 select DISTINCT top 10000
 	
@@ -3219,9 +3125,6 @@ RIGHT(CONCAT('0000000000',''), 8) AS [Monthly Benefit Amount - 4],
 LEFT(CONCAT('', SPACE(1)), 1) AS [Salary Mode - 4],
 RIGHT(CONCAT('0000000000',''), 7) AS [Salary Amount - 4],
 
-
-
-
 LEFT(CONCAT('', SPACE(2)), 2) AS [Coverage Code - 5], --STD
 LEFT(CONCAT('', SPACE(8)), 8) AS [Coverage Start Date - 5],
 LEFT(CONCAT('', SPACE(8)), 8) AS [Coverage Stop Date - 5],
@@ -3235,7 +3138,6 @@ LEFT(CONCAT('', SPACE(10)), 10) AS [Filler],
 RIGHT(CONCAT('0000000000',''), 8) AS [Weekly Benefit Amount - 5],--#todo: std benefit amount
 LEFT(CONCAT('', SPACE(1)), 1) AS [Salary Mode - 5],
 RIGHT(CONCAT( '0000000000',''), 7) AS [Salary Amount - 5],
-
 
 LEFT(CONCAT('', SPACE(2)), 2) AS [Coverage Code - 6],
 LEFT(CONCAT('', SPACE(8)), 8) AS [Coverage Start Date - 6],
@@ -3553,7 +3455,6 @@ LEFT JOIN EMPLOYEE_ADDRESS_DETAIL_VIEW AD
 	AND AD.TO_DATE = '9999-12-31'
 	AND AD.SSN = EV.SSN
 
-
 LEFT JOIN [reporting_prodbhpmin].Cobra.vDependentCobraElections DENTAL
 	on ev.SSN = DENTAL.SSN
 	AND DENTAL.BenefitId = 'DENTAL'
@@ -3595,13 +3496,7 @@ LEFT JOIN EMPLOYEE_ATTRIBUTE_PROCESSED_VALUE_DETAIL_VIEW ATT6
 where 1=1
 and (dental.ssn is not null
 )
-
-
-
-
-
-
-order by 3 asc, 1 desc, 4 asc </pre>,
+order by 3 asc, 1 desc, 4 asc </pre>`,
 
       essay: `<h3>Law School Writing Sample</h3><p>Essay examining the ethical implications of administrative discretion in correctional settings.</p>`,
 
