@@ -290,7 +290,7 @@ My academic journey reflects this dual path. At Texas Tech University, I’m com
 
       pivot: `<h3>SQL Pivot & Attribute Join</h3><p>This example demonstrates advanced SQL logic using a pivoted attribute table with dynamic joins to streamline benefit reporting.</p>` +
              `<pre>SELECT\n    ev.SSN,\n    ATT.STATUS,\n    ATT.ACAFTPT,\n    ATT.ORIGINALHIREDATE,\n    ATT.CURRENTSALARY,\n    ATT.ELIGGROUP\n \nFROM EMPLOYEE_VIEW ev\n \nLEFT JOIN\n    (SELECT SSN,\n            EMPLOYEE_ATTRIBUTE_ID,\n            COALESCE(STRING_VALUE, CAST(NUMBER_VALUE AS VARCHAR(50)),CAST(FORMAT(DATE_VALUE, 'MM/dd/yyyy') AS VARCHAR(50))) AS VALUE\n        FROM EMPLOYEE_ATTRIBUTE_PROCESSED_VALUE_DETAIL_VIEW\n        WHERE TO_DATE = '9999-12-31') AS TBL\n    PIVOT(MAX(VALUE)\n        FOR EMPLOYEE_ATTRIBUTE_ID IN (STATUS, ACAFTPT, ORIGINALHIREDATE, CURRENTSALARY, ELIGGROUP)) AS ATT ON ATT.SSN = ev.SSN\n\nORDER BY 1;</pre>`+ 
-            <p>This example demonstrates advanced function logic at work.</p>`+
+            `<p>This example demonstrates advanced function logic at work.</p>`+
 	      `<pre>WITH RankedEmployees AS (
     SELECT 
         ev.last_name AS 'Employee Last Name',
@@ -322,7 +322,7 @@ SELECT
 FROM RankedEmployees
 WHERE RowNum = 1
 ORDER BY Age DESC; -- Sorting by age (oldest to youngest)</pre>`+
-	    <p>Finally, I have included a full-length SQL report I created that utilizes multiple complex joins and unions to produce a coverage file.</p>`+
+	    `<p>Finally, I have included a full-length SQL report I created that utilizes multiple complex joins and unions to produce a coverage file.</p>`+
         `<pre> declare @lookback int = 9
 
 --TODO: ADD CDB LOGIC
