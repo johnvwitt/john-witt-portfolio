@@ -224,7 +224,7 @@ My academic journey reflects this dual path. At Texas Tech University, I’m com
       <br />Interdisciplinary degree combining social sciences, legal reasoning, and leadership theory to prepare for complex problem-solving in both corporate and legal environments.
       <br />Activities and societies: Sigma Tau Delta, Phi Alpha Delta, National Society of Leadership and Success, Philosophy Club
       </p>
-<a class="button button1" href="https://john-witt-portfolio.netlify.app/JVW Unofficial Transcript 20250516.pdf" download>
+<a class="button button1" href="https://john-witt-portfolio.netlify.app/JVW%20Unofficial%20Transcript%2020250516.pdf" download>
   Download My TTU Transcripts (PDF)
 </a>
 	    
@@ -236,7 +236,7 @@ My academic journey reflects this dual path. At Texas Tech University, I’m com
       		<br />Activities and societies: Phi Theta Kappa, National Society of Leadership and Success
       </p>
 	
-<a class="button button1" href="https://john-witt-portfolio.netlify.app/Witt_John_Unofficial Transcript TVCC 6_1_2024.pdf" download>
+<a class="button button1" href="https://john-witt-portfolio.netlify.app/Witt_John_Unofficial%20Transcript%20TVCC%206_1_2024.pdf" download>
   Download My TVCC Transcripts (PDF)
 </a>
 	    
@@ -309,7 +309,7 @@ My academic journey reflects this dual path. At Texas Tech University, I’m com
 
     const content = {
       audit: `<h3>Organizational Leadership</h3><p>How do you deal with conflict in the workplace? Read my perspective on the relationship between assertiveness, confrontation, leadership, ethical communication, and results.</p>` +
-             `<iframe src="https://docs.google.com/gview?url=https://john-witt-portfolio.netlify.app/Reforming the Filibuster.pdf&embedded=true" width="100%" height="600px" style="border:none;"></iframe>`,
+             `<iframe src="https://docs.google.com/gview?url=https://john-witt-portfolio.netlify.app/Reforming%20the%20Filibuster.pdf&embedded=true" width="100%" height="600px" style="border:none;"></iframe>`,
 
       pivot: `<h3>SQL Pivot & Attribute Join</h3><p>This example demonstrates advanced SQL logic using a pivoted attribute table with dynamic joins to streamline benefit reporting.</p>` +
              `<pre>SELECT\n    ev.SSN,\n    ATT.STATUS,\n    ATT.ACAFTPT,\n    ATT.ORIGINALHIREDATE,\n    ATT.CURRENTSALARY,\n    ATT.ELIGGROUP\n \nFROM EMPLOYEE_VIEW ev\n \nLEFT JOIN\n    (SELECT SSN,\n            EMPLOYEE_ATTRIBUTE_ID,\n            COALESCE(STRING_VALUE, CAST(NUMBER_VALUE AS VARCHAR(50)),CAST(FORMAT(DATE_VALUE, 'MM/dd/yyyy') AS VARCHAR(50))) AS VALUE\n        FROM EMPLOYEE_ATTRIBUTE_PROCESSED_VALUE_DETAIL_VIEW\n        WHERE TO_DATE = '9999-12-31') AS TBL\n    PIVOT(MAX(VALUE)\n        FOR EMPLOYEE_ATTRIBUTE_ID IN (STATUS, ACAFTPT, ORIGINALHIREDATE, CURRENTSALARY, ELIGGROUP)) AS ATT ON ATT.SSN = ev.SSN\n\nORDER BY 1;</pre>`+ 
@@ -3524,7 +3524,7 @@ and (dental.ssn is not null
 order by 3 asc, 1 desc, 4 asc </pre>`,
 
       essay: `<h3>Law School Writing Samples</h3><p>Essay examining the ethical implications of administrative discretion in correctional settings.</p>`+
-	      `<iframe src="https://docs.google.com/gview?url=https://john-witt-portfolio.netlify.app/Reforming the Filibuster.pdf&embedded=true" width="100%" height="600px" style="border:none;"></iframe>`,
+	      `<iframe src="https://docs.google.com/gview?url=https://john-witt-portfolio.netlify.app/Reforming%20the%20Filibuster.pdf&embedded=true" width="100%" height="600px" style="border:none;"></iframe>`,
 
       nocturne: `<h3>Nocturne Verse</h3>
 <p>
@@ -3539,15 +3539,15 @@ Submissions are open, and the journal is still young. If you're a writer looking
 <a href="https://nocturne-verse.netlify.app" target="_blank">https://nocturne-verse.netlify.app</a>
 </p>`,
 
-      gallery_sample_1: `<h3>Movie Case Report - The Father</h3><iframe src="https://docs.google.com/gview?url=https://john-witt-portfolio.netlify.app/Movie Case Report - The Father.pdf&embedded=true" width="100%" height="600px" style="border:none;"></iframe>`,
+      gallery_sample_1: `<h3>Movie Case Report - The Father</h3><iframe src="https://docs.google.com/gview?url=https://john-witt-portfolio.netlify.app/Movie%20Case%20Report%20-%20The%20Father.pdf&embedded=true" width="100%" height="600px" style="border:none;"></iframe>`,
 
-      gallery_sample_2: `<h3>Case Study - Anxiety</h3><iframe src="https://docs.google.com/gview?url=https://john-witt-portfolio.netlify.app/Case Study - Anxiety.pdf&embedded=true" width="100%" height="600px" style="border:none;"></iframe>`,
-      gallery_sample_3: `<h3>Case Study - Mood Disorders</h3><iframe src="https://docs.google.com/gview?url=https://john-witt-portfolio.netlify.app/Case Study - Mood Disorders.pdf&embedded=true" width="100%" height="600px" style="border:none;"></iframe>`,
-       gallery_sample_4: `<h3>Reforming the Filibuster</h3><iframe src="https://docs.google.com/gview?url=https://john-witt-portfolio.netlify.app/Reforming the Filibuster.pdf&embedded=true" width="100%" height="600px" style="border:none;"></iframe>`,
-       gallery_sample_5: `<h3>A Brief Analysis of Partisan Polarization</h3><iframe src="https://docs.google.com/gview?url=https://john-witt-portfolio.netlify.app/A Brief Analysis of Partisan Polarization.pdf&embedded=true" width="100%" height="600px" style="border:none;"></iframe>`,
-       gallery_sample_6: `<h3>Case Brief - Johnson v SPC</h3><iframe src="https://docs.google.com/gview?url=https://john-witt-portfolio.netlify.app/Case Brief - Johnson v SPC.pdf&embedded=true" width="100%" height="600px" style="border:none;"></iframe>`,
-       gallery_sample_7: `<h3>Case Brief - Johnson v SPC</h3><iframe src="https://docs.google.com/gview?url=https://john-witt-portfolio.netlify.app/Case Study - Mood Disorders.pdf&embedded=true" width="100%" height="600px" style="border:none;"></iframe>`,
-       gallery_sample_8: `<h3>Case Study - Cyclothymic Disorder</h3><iframe src="https://docs.google.com/gview?url=https://john-witt-portfolio.netlify.app/Case Study - Cyclothymic Disorder.pdf&embedded=true" width="100%" height="600px" style="border:none;"></iframe>`,
+      gallery_sample_2: `<h3>Case Study - Anxiety</h3><iframe src="https://docs.google.com/gview?url=https://john-witt-portfolio.netlify.app/Case%20Study%20-%20Anxiety.pdf&embedded=true" width="100%" height="600px" style="border:none;"></iframe>`,
+      gallery_sample_3: `<h3>Case Study - Mood Disorders</h3><iframe src="https://docs.google.com/gview?url=https://john-witt-portfolio.netlify.app/Case%20Study%20-%20Mood%20Disorders.pdf&embedded=true" width="100%" height="600px" style="border:none;"></iframe>`,
+       gallery_sample_4: `<h3>Reforming the Filibuster</h3><iframe src="https://docs.google.com/gview?url=https://john-witt-portfolio.netlify.app/Reforming%20the%20Filibuster.pdf&embedded=true" width="100%" height="600px" style="border:none;"></iframe>`,
+       gallery_sample_5: `<h3>A Brief Analysis of Partisan Polarization</h3><iframe src="https://docs.google.com/gview?url=https://john-witt-portfolio.netlify.app/A%20Brief%20Analysis%20of%20Partisan%20Polarization.pdf&embedded=true" width="100%" height="600px" style="border:none;"></iframe>`,
+       gallery_sample_6: `<h3>Case Brief - Johnson v SPC</h3><iframe src="https://docs.google.com/gview?url=https://john-witt-portfolio.netlify.app/Case%20Brief%20-%20Johnson%20v%20SPC.pdf&embedded=true" width="100%" height="600px" style="border:none;"></iframe>`,
+       gallery_sample_7: `<h3>Case Brief - Johnson v SPC</h3><iframe src="https://docs.google.com/gview?url=https://john-witt-portfolio.netlify.app/Case%20Study%20-%20Mood%20Disorders.pdf&embedded=true" width="100%" height="600px" style="border:none;"></iframe>`,
+       gallery_sample_8: `<h3>Case Study - Cyclothymic Disorder</h3><iframe src="https://docs.google.com/gview?url=https://john-witt-portfolio.netlify.app/Case%20Study%20-%20Cyclothymic%20Disorder.pdf&embedded=true" width="100%" height="600px" style="border:none;"></iframe>`,
     };
     };
 
